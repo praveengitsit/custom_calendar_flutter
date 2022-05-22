@@ -12,17 +12,14 @@ a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/pl
 
 Here is a small example that show you how to use the package.
 
-   ```dart
-   NavCalendar
-(
-initialValue: DateTime.now()
-,
-onChanged: (
-value) {
-print(value);
-},
-)
-   ```
+```dart   
+NavCalendar(
+      initialValue: DateTime.now(),
+      onChanged: (value) {
+        print(value);
+      },
+) 
+```
 
 ### SAMPLE DEMO
 
