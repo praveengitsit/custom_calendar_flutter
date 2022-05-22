@@ -13,35 +13,15 @@ a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/pl
 Here is a small example that show you how to use the package.
 
    ```dart
-      
-    class CalendarField extends StatelessWidget {  
-      const CalendarField({Key? key}) : super(key: key);  
-      
-      @override  
-      Widget build(BuildContext context) {  
-        return BlocBuilder<NavigatingCalendarBloc, NavigatingCalendarState>(  
-          buildWhen: (previous, current) =>  
-              previous.currentDate != current.currentDate,  
-      builder: (context, state) {  
-            return Row(  
-              mainAxisAlignment: MainAxisAlignment.center,  
-      children: [  
-                NavigatingCalendar(  
-                  currentValue: state.currentDate,  
-      onChanged: (value) {  
-                    context.read<NavigatingCalendarBloc>().add(  
-                          DateChangedEvent(  
-                            newDate: value,  
-                                    ),  
-                                );  
-                            },  
-                        ),  
-                    ],  
-                );  
-            },  
-        );  
-      }  
-    } 
+   NavCalendar
+(
+initialValue: DateTime.now()
+,
+onChanged: (
+value) {
+print(value);
+},
+)
    ```
 
 ### SAMPLE DEMO
