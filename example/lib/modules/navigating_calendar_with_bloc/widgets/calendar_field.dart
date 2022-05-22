@@ -7,13 +7,13 @@ class CalendarField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NavigatingCalendarBloc, NavigatingCalendarState>(
       buildWhen: (previous, current) =>
-          previous.currentDate != current.currentDate,
+          previous.selectedDate != current.selectedDate,
       builder: (context, state) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             NavCalendar(
-              currentValue: state.currentDate,
+              initialValue: state.selectedDate,
               onChanged: (value) {
                 context.read<NavigatingCalendarBloc>().add(
                       DateChangedEvent(

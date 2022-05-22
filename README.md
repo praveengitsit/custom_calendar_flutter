@@ -12,7 +12,7 @@ a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/pl
 
 Here is a small example that show you how to use the package.
 
-   ``` 
+   ```dart
       
     class CalendarField extends StatelessWidget {  
       const CalendarField({Key? key}) : super(key: key);  
@@ -41,7 +41,7 @@ Here is a small example that show you how to use the package.
             },  
         );  
       }  
-    } ```
+    } 
    ```
 
 ### SAMPLE DEMO
@@ -49,9 +49,3 @@ Here is a small example that show you how to use the package.
 ![Image of Navigating Calendar](https://github.com/praveengitsit/nav_calendar/blob/main/assets/images/nc_still.png)
 
 ![Working demo of Navigating Calendar](https://github.com/praveengitsit/nav_calendar/blob/main/assets/images/nc_working.gif)
-
-### NOTE
-
-The UI state of the calendar will only change when the currentValue passed to it changes. This is to
-ensure that the state is reflected in the UI, in that order. Might be prone to change in upcoming
-versions

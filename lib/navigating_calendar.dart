@@ -9,18 +9,18 @@ class NavCalendar extends StatelessWidget {
   static const _100_YEARS = Duration(days: 365 * 100);
 
   final ValueChanged<DateTime> onChanged;
-  final DateTime? currentValue;
+  final DateTime? initialValue;
 
   const NavCalendar({
     Key? key,
     required this.onChanged,
-    required this.currentValue,
+    required this.initialValue,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FormField<DateTime>(
-      initialValue: currentValue,
+      initialValue: initialValue,
       builder: (formState) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +66,9 @@ class NavCalendar extends StatelessWidget {
                     horizontal: 12.0,
                   ),
                   child: Text(
-                    _label,
+                    formState.value == null
+                        ? 'No date chosen'
+                        : DateFormat('yyyy - MM - dd').format(formState.value!),
                     style: const TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 20,
@@ -87,7 +89,7 @@ class NavCalendar extends StatelessWidget {
                   onTap: () async {
                     final date = await showDatePicker(
                       context: context,
-                      initialDate: currentValue ?? DateTime.now(),
+                      initialDate: formState.value ?? DateTime.now(),
                       firstDate: DateTime.now().subtract(_100_YEARS),
                       lastDate: DateTime.now().add(_100_YEARS),
                     );
@@ -110,7 +112,7 @@ class NavCalendar extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             onTap: () {
-              var date = currentValue;
+              var date = formState.value;
               if (date != null) {
                 date = date.subtract(
                   const Duration(days: 1),
@@ -144,7 +146,7 @@ class NavCalendar extends StatelessWidget {
         ///**************************************
         InkWell(
           onTap: () {
-            var date = currentValue;
+            var date = formState.value;
             if (date != null) {
               date = date.add(
                 const Duration(days: 1),
@@ -173,11 +175,5 @@ class NavCalendar extends StatelessWidget {
         )
       ],
     );
-  }
-
-  String get _label {
-    if (currentValue == null) return 'No date chosen';
-
-    return DateFormat('yyyy - MM - dd').format(currentValue!);
   }
 }

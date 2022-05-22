@@ -11,7 +11,7 @@ class NavigatingCalendarBloc
     extends Bloc<NavigatingCalendarEvent, NavigatingCalendarState> {
   NavigatingCalendarBloc()
       : super(NavigatingCalendarState(
-          currentDate: DateTime.now(),
+          selectedDate: DateTime.now(),
         )) {
     on<DateChangedEvent>(_onDateChangedEvent);
   }
@@ -22,7 +22,7 @@ class NavigatingCalendarBloc
   ) {
     emit(
       state.copyWith(
-        currentDate: event.newDate,
+        selectedDate: event.newDate,
       ),
     );
   }
